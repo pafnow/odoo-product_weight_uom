@@ -3,7 +3,7 @@
     'name': 'Product Weight UOM',
     'version': '13.0.1.0.0',
     'depends': ['product','uom'],
-    'author': 'Pafnow',
+    'author': 'MRM, Pafnow',
     'category': 'Product',
     'description': 'Calculate product weight based on selected UOM',
     'images': ['static/description/main_screenshot.png'],
