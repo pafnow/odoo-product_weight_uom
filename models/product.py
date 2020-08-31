@@ -30,6 +30,7 @@ class ProductTemplate(models.Model):
         for record in self:
             record.uom_weight = record.weight * record.uom_weight_id.factor
 
+    @api.onchange('uom_weight', 'uom_weight_id')  # //TODO: Investigate why api.depends not working here
     def _set_uom_weight(self):
         for record in self:
             record.weight = record.uom_weight * record.uom_weight_id.factor_inv

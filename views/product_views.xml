@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='weight']" position="replace">
                     <field name="uom_weight" /> <field name="uom_weight_id" /><br />
-                    <field name="weight" class="oe_read_only" />
+                    <field name="weight" />
                 </xpath>
             </field>
         </record>
