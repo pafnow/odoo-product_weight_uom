@@ -2,17 +2,19 @@
 
 from odoo import api, fields, models
 
+
 class ProductProduct(models.Model):
     _inherit = 'product.product'
 
     uom_weight = fields.Float('Weight', digits='Stock Weight', compute='_compute_uom_weight', inverse='_set_uom_weight')
-    #uom_weight_id = fields.Many2one('uom.uom', 'Weight Unit of Measure', default=_get_default_weight_uom, required=True, help="Default unit of measure used for weight.")
+    uom_weight_id = fields.Many2one(related='product_tmpl_id.uom_weight_id', readonly=False)
 
     @api.depends('weight', 'uom_weight_id.factor')
     def _compute_uom_weight(self):
         for record in self:
             record.uom_weight = record.weight * record.uom_weight_id.factor
 
+    @api.onchange('uom_weight', 'uom_weight_id')  # //TODO: Investigate why api.depends not working here
     def _set_uom_weight(self):
         for record in self:
             record.weight = record.uom_weight * record.uom_weight_id.factor_inv

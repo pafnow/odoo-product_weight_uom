@@ -6,9 +6,19 @@
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_form_view"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='weight']" position="replace">
+                <xpath expr="//field[@name='weight']" position="before">
                     <field name="uom_weight" /> <field name="uom_weight_id" /><br />
-                    <field name="weight" />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="product_variant_easy_edit_view" model="ir.ui.view">
+            <field name="name">product.product.view.form.easy.inherit.weight.uom</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_variant_easy_edit_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='weight']" position="before">
+                    <field name="uom_weight" /> <field name="uom_weight_id" /><br />
                 </xpath>
             </field>
         </record>
